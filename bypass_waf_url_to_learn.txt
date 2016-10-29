@@ -1,7 +1,1 @@
-waf绕过技巧库：
-http://www.freebuf.com/articles/web/10099.html   WAF绕过的奇技淫巧
-http://tech-technical.com/index.php/2015/11/11/waf-bypass-sql-injection-tutorial/ 老外的技巧
-http://webvuln.blogspot.hk/2015_04_01_archive.html 测试fuzz
-http://www.wooyun.org/bugs/wooyun-2014-089426　　good
-https://forum.90sec.org/forum.php?mod=viewthread&tid=9133  90sec新思路
-http://www.idiot-attacker.com/2016/02/macam-macam-kode-bypass-waf.html good
+https://3xp10it.cc/web/2016/08/12/waf%E7%BB%95%E8%BF%87%E6%8A%80%E5%B7%A7%E5%BA%93/
