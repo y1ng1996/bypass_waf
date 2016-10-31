@@ -4,14 +4,17 @@ import re
 import itertools
 from urllib.parse import urlparse
 import sys
-from exp10it import figlet2file
-from exp10it import update_config_file_key_value
-from exp10it import get_key_value_from_config_file
-from exp10it import CLIOutput
-
 if sys.version_info < (3, 0):
     sys.stdout.write("Sorry,xwaf requires Python 3.x\n")
     sys.exit(1)
+try:
+	from exp10it import figlet2file
+except:
+	os.system("pip3 install exp10it")
+	from exp10it import figlet2file
+	from exp10it import update_config_file_key_value
+	from exp10it import get_key_value_from_config_file
+	from exp10it import CLIOutput
 
 
 class Program(object):
