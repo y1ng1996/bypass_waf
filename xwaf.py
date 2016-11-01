@@ -1751,7 +1751,7 @@ class Program(object):
             self.output.good_print("--hex和--no-cast无果,正在尝试所有2种tamper组合以内的组合再加上几个比较好的3个以上的tamper组合来尝试获取E|U|S高效注入方法",'green')
             # 下面从log_file文件中获取数据库类型来决定用什么数据库的tamper,如果没有找到数据库类型则用默
             # 认的MySQL数据库类型的tamper
-            db_type = eval(self.get_key_value_from_config_file(self.log_file,'default','db_type'))
+            db_type = eval(self.get_key_value_from_config_file(self.log_config_file,'default','db_type'))
 
             if db_type == 'MYSQL':
                 db_type_tamper_list = self.MYSQL
@@ -1961,7 +1961,7 @@ class Program(object):
             self.output.good_print("--hex和--no-cast无果,正在尝试使用每一个组合tamper获取当前url的数据库名...",'green')
             #在经历get_db_type_need_tamper函数之后将db_type的结果保存在了config_file中，log_file中也可获取,但要
             #先判断返回是否为0
-            db_type = eval(self.get_key_value_from_config_file(self.log_file,'default','db_type'))
+            db_type = eval(self.get_key_value_from_config_file(self.log_config_file,'default','db_type'))
             if db_type == 'MYSQL':
                 db_type_tamper_list = self.MYSQL
             elif db_type == 'MSSQL':
@@ -2165,7 +2165,7 @@ class Program(object):
             self.output.good_print("--hex和--no-cast无果,正在尝试使用每一个组合tamper获取当前数据库的表名...",'green')
             #在经历get_db_type_need_tamper函数之后将db_type的结果保存在了config_file中，log_file中也可获取,但要
             #先判断返回是否为0
-            db_type = eval(self.get_key_value_from_config_file(self.log_file,'default','db_type'))
+            db_type = eval(self.get_key_value_from_config_file(self.log_config_file,'default','db_type'))
             if db_type == 'MYSQL':
                 db_type_tamper_list = self.MYSQL
             elif db_type == 'MSSQL':
@@ -2375,7 +2375,7 @@ class Program(object):
             self.output.good_print("--hex和--no-cast无果,正在尝试使用每一个组合tamper获取当前数据库的表的列名...",'green')
             #在经历get_db_type_need_tamper函数之后将db_type的结果保存在了config_file中，log_file中也可获取,但要
             #先判断返回是否为0
-            db_type = eval(self.get_key_value_from_config_file(self.log_file,'default','db_type'))
+            db_type = eval(self.get_key_value_from_config_file(self.log_config_file,'default','db_type'))
             if db_type == 'MYSQL':
                 db_type_tamper_list = self.MYSQL
             elif db_type == 'MSSQL':
@@ -2600,7 +2600,7 @@ class Program(object):
             self.output.good_print("--hex和--no-cast无果,正在尝试使用每一个组合tamper获取当前数据库的表的列名的具体数据...",'green')
             #在经历get_db_type_need_tamper函数之后将db_type的结果保存在了config_file中，log_file中也可获取,但要
             #先判断返回是否为0
-            db_type = eval(self.get_key_value_from_config_file(self.log_file,'default','db_type'))
+            db_type = eval(self.get_key_value_from_config_file(self.log_config_file,'default','db_type'))
             if db_type == 'MYSQL':
                 db_type_tamper_list = self.MYSQL
             elif db_type == 'MSSQL':
