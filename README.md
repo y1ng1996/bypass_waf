@@ -1,37 +1,39 @@
 # xwaf
 
-<a href="https://github.com/3xp10it/bypass_waf/blob/master/xwaf.py">xwaf</a>是一个python写的waf自动绕过工具
+<a href="https://github.com/3xp10it/bypass_waf/blob/master/xwaf.py">xwaf</a>是一个python写的waf自动绕过工具  
 上一个版本是<a href="https://github.com/3xp10it/bypass_waf/blob/master/bypass_waf.py">bypass_waf</a>  
 xwaf相比bypass_waf更智能,可无人干预,自动暴破waf
 
 ### 代码流程图:
 
-#### [127.0.0.1/1.php?id=1为例]
+```markdown
+以[127.0.0.1/1.php?id=1为例]
 
-		1>start
-		2>检测系统/usr/share/sqlmap/127.0.0.1/log文件是否存在
-		3>获取log文件:
-			如果不存在log文件则调用get_log_file_need_tamper函数,执行完这个函数后获得log文件,也即成功检测出目标
-			url有sqli注入漏洞,如果执行完get_log_file_need_tamper函数没有获得log文件则认为该url没有sqli漏洞
-		4>获取db_type[数据库类型]
-			调用get_db_type_need_tamper函数,用于后面的tamper排列组合时,只将目标url对应的数据库类型的tamper用于
-			该目标在sql注入时tamper的选择后的组合
-		5>获取sqli_type[注入方法]
-			调用get_good_sqli_type_need_tamper函数,sql注入方法中一共有U|S|E+B|Q|T 6种注入方法,后3种查询效率低,
-			首先在log文件中查找是否有U|S|E这3种高效方法中的任意一种,如果有略过这一步,否则执行
-			get_good_sqli_type_need_tamper函数,执行该函数将尝试获得一种以上的高效注入方法
-		6>获取current-db[当前数据库名]
-			如果上面获得了高效注入方法,则先用高效注入方法获得current-db,如果没有则用B|Q|T方法尝试获得
-			current-db,用来尝试获得current-db的函数是get_db_name_need_tamper
-		7>获取table[当前数据库的表名]
-			如果上面获得了高效注入方法,则先用高效注入方法获得table,如果没有则用B|Q|T方法尝试获得table,尝试获得
-			table的函数是get_table_name_need_tamper
-		8>获取column[当前数据库的第一个表的所有列名]
-			如果上面获得了高效注入方法,则先用高效注入方法获得column,如果没有则用B|Q|T方法获得column,尝试获得
-			column的函数是get_column_name_need_tamper
-		9>获取entries[column对应的真实数据]
-			调用get_entries_need_tamper函数,执行完get_entries_need_tamper函数后,waf成功绕过,从上面的步骤一直到
-			这个步骤,逐步获得最佳绕过waf的脚本组合
+1>start
+2>检测系统/usr/share/sqlmap/127.0.0.1/log文件是否存在
+3>获取log文件:
+	如果不存在log文件则调用get_log_file_need_tamper函数,执行完这个函数后获得log文件,也即成功检测出目标
+	url有sqli注入漏洞,如果执行完get_log_file_need_tamper函数没有获得log文件则认为该url没有sqli漏洞
+4>获取db_type[数据库类型]
+	调用get_db_type_need_tamper函数,用于后面的tamper排列组合时,只将目标url对应的数据库类型的tamper用于
+	该目标在sql注入时tamper的选择后的组合
+5>获取sqli_type[注入方法]
+	调用get_good_sqli_type_need_tamper函数,sql注入方法中一共有U|S|E+B|Q|T 6种注入方法,后3种查询效率低,
+	首先在log文件中查找是否有U|S|E这3种高效方法中的任意一种,如果有略过这一步,否则执行
+	get_good_sqli_type_need_tamper函数,执行该函数将尝试获得一种以上的高效注入方法
+6>获取current-db[当前数据库名]
+	如果上面获得了高效注入方法,则先用高效注入方法获得current-db,如果没有则用B|Q|T方法尝试获得
+	current-db,用来尝试获得current-db的函数是get_db_name_need_tamper
+7>获取table[当前数据库的表名]
+	如果上面获得了高效注入方法,则先用高效注入方法获得table,如果没有则用B|Q|T方法尝试获得table,尝试获得
+	table的函数是get_table_name_need_tamper
+8>获取column[当前数据库的第一个表的所有列名]
+	如果上面获得了高效注入方法,则先用高效注入方法获得column,如果没有则用B|Q|T方法获得column,尝试获得
+	column的函数是get_column_name_need_tamper
+9>获取entries[column对应的真实数据]
+	调用get_entries_need_tamper函数,执行完get_entries_need_tamper函数后,waf成功绕过,从上面的步骤一直到
+	这个步骤,逐步获得最佳绕过waf的脚本组合
+```
 
 ### about:
 
