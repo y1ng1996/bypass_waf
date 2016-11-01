@@ -9,12 +9,17 @@ if sys.version_info < (3, 0):
     sys.exit(1)
 try:
     from exp10it import figlet2file
-else:
     from exp10it import figlet2file
     from exp10it import update_config_file_key_value
     from exp10it import get_key_value_from_config_file
     from exp10it import CLIOutput
-
+except:
+    os.system("pip3 install exp10it")
+    from exp10it import figlet2file
+    from exp10it import figlet2file
+    from exp10it import update_config_file_key_value
+    from exp10it import get_key_value_from_config_file
+    from exp10it import CLIOutput
 class Program(object):
 
     def __init__(self):
