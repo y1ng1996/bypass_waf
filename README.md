@@ -1,9 +1,8 @@
 # xwaf
-	xwaf是一个python写的waf自动绕过工具
-<a href="https://github.com/3xp10it/bypass_waf/blob/master/xwaf.py">xwaf</a>
-	上一个版本是bypass_waf,py文件可参考下面链接
-<a href="https://github.com/3xp10it/bypass_waf/blob/master/bypass_waf.py">bypass_waf</a>
-	xwaf相比bypass_waf更智能,可无人干预,自动暴破waf
+
+<a href="https://github.com/3xp10it/bypass_waf/blob/master/xwaf.py">xwaf</a>xwaf是一个python写的waf自动绕过工具
+上一个版本是<a href="https://github.com/3xp10it/bypass_waf/blob/master/bypass_waf.py">bypass_waf</a>
+xwaf相比bypass_waf更智能,可无人干预,自动暴破waf
 
 ### 代码流程图:
 
