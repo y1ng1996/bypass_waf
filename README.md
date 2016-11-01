@@ -1,8 +1,6 @@
 # xwaf
 
-<a href="https://github.com/3xp10it/bypass_waf/blob/master/xwaf.py">xwaf</a>是一个python写的waf自动绕过工具  
-上一个版本是<a href="https://github.com/3xp10it/bypass_waf/blob/master/bypass_waf.py">bypass_waf</a>  
-xwaf相比bypass_waf更智能,可无人干预,自动暴破waf
+<a href="https://github.com/3xp10it/bypass_waf/blob/master/xwaf.py">xwaf</a>是一个python写的waf自动绕过工具,上一个版本是<a href="https://github.com/3xp10it/bypass_waf/blob/master/bypass_waf.py">bypass_waf</a>,xwaf相比bypass_waf更智能,可无人干预,自动暴破waf
 
 ### 代码流程图:
 
@@ -35,23 +33,31 @@ xwaf相比bypass_waf更智能,可无人干预,自动暴破waf
 	这个步骤,逐步获得最佳绕过waf的脚本组合
 ```
 
-### about:
+### About:
 
-		1>xwaf支持记忆,运行中断后下次继续运行时会在中断时的最后一个命令附近继续跑,不会重新经历上面的所有函数的处理
+```markdown
+1>xwaf支持记忆,运行中断后下次继续运行时会在中断时的最后一个命令附近继续跑,不会重新经历上面的所有函数的处理
 
-		2>各个get_xxx_need_tamper函数的处理采用针对当前url的数据库类型(eg.MySQL)的所有过waf的脚本
-		(在sqlmap的tamper目录中)的排列组合的结果与--hex或--no-cast选项进行暴力破解如果--hex起作用了则不再使用
-		--no-cast尝试,--no-cast起作用了也不再用--hex尝试
+2>各个get_xxx_need_tamper函数的处理采用针对当前url的数据库类型(eg.MySQL)的所有过waf的脚本
+(在sqlmap的tamper目录中)的排列组合的结果与--hex或--no-cast选项进行暴力破解如果--hex起作用了则不再使用
+--no-cast尝试,--no-cast起作用了也不再用--hex尝试
 
-		3>need py3.5
+3>need py3.5
 
-		4>usage:
-			python3 xwaf.py "http://127.0.0.1/1.php?id=1"
-			过程中如果被中断了,接着再运行相同命令即可从断点附近接着暴
+4>usage:
+	python3 xwaf.py "http://127.0.0.1/1.php?id=1"
+	过程中如果被中断了,接着再运行相同命令即可从断点附近接着暴
 
-		5>xwaf运行完后将在/root/.sqlmap/output/127.0.0.1目录下的ini文件中看到相关信息,bypassed_command是成功暴破
-		  waf的sqlmap语句
+5>xwaf运行完后将在/root/.sqlmap/output/127.0.0.1目录下的ini文件中看到相关信息,bypassed_command是成功暴破
+  waf的sqlmap语句
 
-		6>在tamper组合中,先用到的tamper会加入到上面的ini文件中,在以后的每个tamper组合中,综合已经得到的有用的
-		  tamper再组合,在上面的ini文件中的tamper_list即为不断完善的tamper组合
+6>在tamper组合中,先用到的tamper会加入到上面的ini文件中,在以后的每个tamper组合中,综合已经得到的有用的
+  tamper再组合,在上面的ini文件中的tamper_list即为不断完善的tamper组合
+```
+
+### Changelog
+
+[2016-11-01] 
+get_db_type_need_tamper之后的数据库类型获取由之前的get_db_type_from_log_file改成
+eval(get_key_value_from_config_file(self.log_config_file,'default','db_type'))
 
